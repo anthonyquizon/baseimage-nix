@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Base Development Setup
+
+Vagrant.configure("2") do |config|
+    env = ENV["DEVBOX"]
+
+    configure.vm.define "dev" do |app|
+        config.vm.provider "docker" do |d|
+            #d.cmd     = ["/sbin/my_init", "--enable-insecure-key"]
+            d.build_dir           = "#{env}/dev/"
+            d.name                = "devBox"
+            d.vagrant_vagrantfile = "#{env}/host/Vagrantfile"
+            d.has_ssh             = true
+            d.link("data:data")
+        end
+    end
+
+    configure.vm.define "data" do |app|
+        config.vm.provider "docker" do |d|
+            d.image     = "bustybox"
+            d.daemonize = true
+        end
+    end
+
+    config.ssh.username         = "root"
+    config.ssh.private_key_path = "insecure_key"
+end

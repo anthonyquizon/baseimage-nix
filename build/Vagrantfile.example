@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Base Development Setup
+
+Vagrant.configure("2") do |config|
+    env = ENV["DEVBOX"]
+
+    configure.vm.define "build" do |app|
+        config.vm.provider "docker" do |d|
+            d.build_dir           = "."
+            d.name                = "buildBox"
+            d.vagrant_vagrantfile = "#{env}/host/Vagrantfile"
+        end
+    end
+end

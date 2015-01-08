@@ -13,3 +13,8 @@
     * https://developer.github.com/v3/repos/releases/#upload-a-release-asset
     * Process
         * on compile create package
+
+# Scripts
+* vagrant dev up; vagrant dev ssh
+* run build
+* put scripts in PATH
