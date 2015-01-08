@@ -3,7 +3,11 @@
 Getting Started:
 ```
 git clone git@github.com:anthoq88/DevBox.git
-cd DevBox
-./init.sh
+cd DevBox && ./init.sh
+
+source ~/.bash_profile
+
+# Or if unsing zsh
+# source ~/.zshrc
 ```
 

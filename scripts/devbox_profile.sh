@@ -3,13 +3,16 @@ export DEVBOX=$(pwd)
 
 # setup convience commands
 function devUp () {
-    # TODO
-    # if not up do
+    cd $DEVBOX/dev
+
+    # TODO if not up do
         # vagrant up
         # set environment variable
-    # vagrant ssh
+
+    vagrant up
+    vagrant ssh
 }
 
 function devBuild () {
-
+    echo "TODO"
 }
