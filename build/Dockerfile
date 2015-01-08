@@ -1,5 +1,8 @@
 FROM phusion/baseimage
 
+#TODO ADD shared folder
+#TODO ADD workspace
+
 ENV HOME /root
 RUN mkdir /build
 ADD . /build
