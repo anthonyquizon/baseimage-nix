@@ -7,17 +7,27 @@
 
 env = ENV["DEVBOX"]
 
+$script = <<SCRIPT
+    addgroup --gid 9999 dev
+    adduser --uid 9999 --gid 9999 --disabled-password --gecos "Development" dev
+
+    su dev
+
+    bash <(curl https://nixos.org/nix/install)
+SCRIPT
+
 Vagrant.configure("2") do |config|
     config.vm.define "dev" do |dev|
         dev.vm.provider "docker" do |d|
-            d.cmd                 = ["/sbin/my_init", "--enable-insecure-key"]
-            d.build_dir           = "./build"
+            d.cmd     = ["/sbin/my_init", "--enable-insecure-key"]
+            d.image               = "phusion/baseimage"
+            #d.build_dir           = "."
             d.vagrant_vagrantfile = "#{env}/host/Vagrantfile"
             d.has_ssh             = true
         end
         
-        dev.vm.synced_folder "#{env}/.devbox-shared/nix", "/nix"
-        #    owner: "dev", group: "dev"
+        #dev.vm.synced_folder "#{env}/.devbox-shared/nix", "/nix",
+            #owner: "dev", group: "dev"
 
         #dev.vm.synced_folder "#{env}/.devbox-shared/home", "/home",
             #owner: "dev", group: "dev"
@@ -25,7 +35,12 @@ Vagrant.configure("2") do |config|
         #dev.vm.synced_folder "~/Development", "/home/dev/Development",
             #type: "nfs"
 
+        dev.vm.synced_folder "#{env}/.devbox-shared/home", "/home"
+        #dev.vm.synced_folder "#{env}/../Environment", "/home"
+
         dev.ssh.username = "root"
         dev.ssh.private_key_path = "insecure_key"
+
+        dev.vm.provision :shell, :inline => $script
     end
 end

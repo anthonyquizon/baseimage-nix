@@ -1,11 +1,12 @@
 
-* Vagrant custom host file
-* Data Volume Containers
+* Data Volume Containers?
     * http://www.atlashealth.com/blog/2014/09/persistent-ruby-gems-docker-container/#.VK0EzIqUfAE
 * Install Nix
     * Setup nixstore location
 * Linked provision files
     * configuration.nix
+* .devbox-shared to host vm?
+
 
 # Deployment
 * Github releases script
@@ -15,6 +16,4 @@
         * on compile create package
 
 # Scripts
-* vagrant dev up; vagrant dev ssh
 * run build
-* put scripts in PATH

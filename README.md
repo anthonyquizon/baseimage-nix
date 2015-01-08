@@ -11,3 +11,9 @@ source ~/.bash_profile
 # source ~/.zshrc
 ```
 
+* boot2docker
+    * Synced Folder Development
+    * baseimage-nix 
+        * Volume Development
+        * Volume /nix
+    

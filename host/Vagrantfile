@@ -1,12 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+env = ENV["DEVBOX"]
+
 Vagrant.configure(2) do |config|
 
     config.vm.box = "yungsang/boot2docker"
 
     config.vm.network "private_network", ip: "10.10.10.10"
-    config.vm.synced_folder "~/Development", "/Development", type: "nfs"
+    config.vm.synced_folder "~/Development", "/Development"
     
     # Fix busybox/udhcpc issue
     config.vm.provision :shell do |s|

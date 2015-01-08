@@ -1,18 +1,17 @@
 
-export DEVBOX=$(pwd)
-
 # setup convience commands
-function devUp () {
-    cd $DEVBOX/dev
+function devup () {
+    (cd /$DEVBOX/dev
+        echo "Setting up dev environment..."
+        # TODO if not up do
+            # vagrant up
+            # set environment variable
 
-    # TODO if not up do
-        # vagrant up
-        # set environment variable
-
-    vagrant up
-    vagrant ssh
+        vagrant up dev --provider=docker
+        vagrant ssh dev
+    )
 }
 
-function devBuild () {
+function devbuild () {
     echo "TODO"
 }
