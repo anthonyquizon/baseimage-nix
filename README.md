@@ -1,4 +1,3 @@
-# DevBox
 # Baseimage-Nix
 
 
