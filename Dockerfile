@@ -1,6 +1,6 @@
 FROM phusion/baseimage
 
-ADD . /build
+ADD ./build /build
 RUN /build/user.sh
 
 USER dev
