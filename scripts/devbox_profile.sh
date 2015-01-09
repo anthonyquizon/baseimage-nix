@@ -38,38 +38,13 @@ function __devup() {
         -i -t \
         $IMAGE_TAG \
         /bin/bash
-
-    #docker run \
-        #-i -t \
-        #-v $SHARED_DIR/nix:/nix \
-        #-v $SHARED_DIR/home/dev:/home/dev \
-        #$IMAGE_TAG \
-        #/bin/bash
 }
 
 function __devbuild() {
-    mkdir -p $SHARED_DIR/nix
-    mkdir -p $SHARED_DIR/home/dev
-    
-    #docker build ../build/ --rm=true
     docker build ../build/ #TODO use DEVPATH
 
     imgId=$(docker images -q | head -n 1)
     docker tag -f $imgId $IMAGE_TAG
-
-    #docker run $imgId /build/nix.sh
-    
-    conId=$(docker ps -aq | head -n 1)
-
-    #docker cp $conId:/nix $SHARED_DIR/nix
-    #docker cp $conId:/home/dev $SHARED_DIR/home/dev
-
-    #docker run \
-        #-v ~/Development/Environment/devbox/.devbox-shared/nix:/nix \
-        #-v ~/Development/Environment/devbox/.devbox-shared/home/dev:/home/dev \
-        #-v ~/Development/:/home/dev/Development \
-        #$id \
-        #/build/nix.sh
 }
 
 function __devclean() {
