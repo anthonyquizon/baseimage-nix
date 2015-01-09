@@ -1,4 +1,0 @@
-devbox:
-    build: ./build
-    volumes: 
-        - ~/Development/:Development

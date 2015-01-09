@@ -16,5 +16,3 @@ function source_devbox {
 source_devbox ~/.bash_profile
 source_devbox ~/.zshrc
 
-mkdir -p .devbox-shared/nix
-#mkdir -p ../Workspace
